@@ -13,7 +13,7 @@ import './Monitor.css'
 import System from '../../pages/System'
 
 export default function Model(props, {start}) {
-  const { nodes, materials } = useGLTF('../../public/Monitor/monitor.gltf')
+  const { nodes, materials } = useGLTF('/Monitor/monitor.gltf')
   return (
     <group {...props} dispose={null} rotation={[0, -0.2, 0]} position={[0.45, 1.5, 1.2]} scale={0.007}>
       <mesh geometry={nodes.Box001__0.geometry} material={materials['Scene_-_Root']} position={[5, -55, -100]} rotation={[-Math.PI / 2, 0, 0]} scale={1.65} />
