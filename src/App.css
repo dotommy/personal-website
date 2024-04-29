@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  background-color: #d1d2d2;
+}
+
+.app{
+  display: flex;
+}
+
+canvas {
+  height: 100vh !important;
+}
+

@@ -1,0 +1,6 @@
+iframe {
+    border-bottom-right-radius: 30px 100%;
+    border-top-right-radius: 30px 100%;
+    border-bottom-left-radius: 30px 100%;
+    border-top-left-radius: 30px 100%;
+}

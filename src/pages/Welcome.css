@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+.welcome{
+    position: absolute;
+    z-index: 10000;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "VT323", monospace;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 24pt;
+    color: white;
+}
+
+.container-welcome{
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-left-style: solid;
+    gap: 40px;
+    border-color: white;
+    border-width: 5pt;
+}
+
+.container-description{
+    display: flex;
+    flex-direction: row;
+}
+
+@keyframes blinking {
+	0%,
+	50%,
+	100% {
+		opacity: 1;
+	}
+
+	25%,
+	75% {
+		opacity: 0;
+	}
+}
+
+.blink{
+    top:0px;
+    left:0px;
+    position: absolute;
+    animation: blinking 2s ease 0s 1 normal forwards;
+    animation-iteration-count: infinite;
+}
+
+.container-button{
+    border-color: white;
+    border-width: 5pt;
+}
+
+.welcome-button{
+    height: 50px;
+    width: 200px;
+    border: none;
+    background-color: transparent;
+    font-family: "VT323", monospace;
+    font-weight: 500;
+    font-style: normal;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-left-style: solid;
+    font-size: 24pt;
+    color: white;
+}
+
+.welcome-button:hover{
+    background-color: white;
+    color: black;
+}
+
+.hide{
+    display: none;
+}
