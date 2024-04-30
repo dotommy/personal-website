@@ -12,11 +12,12 @@ import { useGLTF, Html } from '@react-three/drei'
 import './Monitor.css'
 import System from '../../pages/System'
 
-export default function Model(props, {start}) {
-  const { nodes, materials } = useGLTF('/Monitor/monitor.gltf')
+
+export default function Model(props) {
+  const { nodes, materials } = useGLTF('/monitor-transformed.glb')
   return (
     <group {...props} dispose={null} rotation={[0, -0.2, 0]} position={[0.45, 1.5, 1.2]} scale={0.007}>
-      <mesh geometry={nodes.Box001__0.geometry} material={materials['Scene_-_Root']} position={[5, -55, -100]} rotation={[-Math.PI / 2, 0, 0]} scale={1.65} />
+      <mesh castShadow receiveShadow geometry={nodes.Box001__0.geometry} material={materials['Scene_-_Root']} position={[5, -55, -100]} rotation={[-Math.PI / 2, 0, 0]} scale={1.65} />
       <Html
         transform
         scale={12.9}
@@ -29,4 +30,4 @@ export default function Model(props, {start}) {
   )
 }
 
-useGLTF.preload('/monitor.gltf')
+useGLTF.preload('/monitor-transformed.glb')
