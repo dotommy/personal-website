@@ -87,3 +87,9 @@
 .hide{
     display: none;
 }
+
+@media only screen and (max-width: 600px) {
+    .container-welcome {
+      font-size: 20pt;
+    }
+  }
