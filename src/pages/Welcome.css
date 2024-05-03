@@ -88,6 +88,32 @@
     display: none;
 }
 
+.welcome-button[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .cookie-button{
+    height: 50px;
+    width: 200px;
+    border: none;
+    background-color: transparent;
+    font-family: "VT323", monospace;
+    font-weight: 500;
+    font-style: normal;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-left-style: solid;
+    font-size: 24pt;
+    color: white;
+}
+
+.cookie-button:hover{
+    background-color: white;
+    color: black;
+}
+
 @media only screen and (max-width: 600px) {
     .container-welcome {
       font-size: 20pt;
