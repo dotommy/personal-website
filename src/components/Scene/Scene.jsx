@@ -8,14 +8,24 @@ Source: https://sketchfab.com/3d-models/office-assets-16c1a779bb0a4055a26367741d
 Title: Office - Assets
 */
 
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
+import { useFrame } from '@react-three/fiber'
 
 export default function Model(props) {
   const { nodes, materials } = useGLTF('/scene-transformed.glb')
+  const cactusRef = useRef()
+
+  useFrame(({ clock }) => {
+    const t = clock.elapsedTime;
+    if (cactusRef.current) {
+      cactusRef.current.rotation.z = Math.sin(t * 0.5) * 0.008;
+    }
+  });
+
   return (
     <group {...props} dispose={null} position={[1.5, -0.7, 0]} rotation={[0, -1.36, 0]} scale={1.9}>
-      <mesh geometry={nodes.Object_4.geometry} material={materials.M_Cactus_1024} position={[-0.051, 0.743, 0.876]} rotation={[0, -0.736, 0]} />
+      <mesh ref={cactusRef} geometry={nodes.Object_4.geometry} material={materials.M_Cactus_1024} position={[-0.051, 0.743, 0.876]} rotation={[0, -0.736, 0]} />
       <mesh geometry={nodes.Object_10.geometry} material={materials.M_Computer_2048} position={[0.488, 0.743, 0.925]} rotation={[0, 0.168, 0]} />
       <mesh geometry={nodes.Object_18.geometry} material={materials.M_Filebox_1024} position={[-0.084, 0.743, 1.283]} rotation={[0, 1.531, 0]} scale={[1.096, 1, 1]} />
       <mesh geometry={nodes.Object_54.geometry} material={materials.M_Sigarettes_512} position={[0.481, 0.747, 1.504]} rotation={[1.002, 0.422, 0.998]} scale={0.5} />

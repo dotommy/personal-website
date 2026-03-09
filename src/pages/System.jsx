@@ -124,7 +124,11 @@ function System() {
     };
 
     return (
-      <div className='system'>
+      <div
+        className='system'
+        onMouseEnter={() => { window.__terminalActive = true; }}
+        onMouseLeave={() => { window.__terminalActive = false; }}
+      >
         <div className='crt' onClick={handleClick} onWheel={(e) => {mainScroll(e)}}></div>
           <div className="Terminal" ref={terminalref}>
           <main className="terminal">
@@ -146,6 +150,7 @@ function System() {
                       onChange={handleInputChange}
                       onKeyDown={handleKeyDown}
                       autoFocus
+                      spellCheck={false}
                       ref={textEndRef}
                     />
                   </form>

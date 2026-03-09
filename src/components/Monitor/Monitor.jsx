@@ -7,7 +7,7 @@ Source: https://sketchfab.com/3d-models/old-monitor-6fb5032d4c0f45c3b767c1a8d694
 Title: Old monitor
 */
 
-import React, { useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { useGLTF, Html } from '@react-three/drei'
 import './Monitor.css'
 import System from '../../pages/System'
@@ -15,6 +15,16 @@ import System from '../../pages/System'
 
 export default function Model(props) {
   const { nodes, materials } = useGLTF('/monitor-transformed.glb')
+  const [phase, setPhase] = useState('off')
+
+  useEffect(() => {
+    // Sync with camera arrival at ~2.5s
+    const t1 = setTimeout(() => setPhase('flash'), 2500);
+    const t2 = setTimeout(() => setPhase('flicker'), 2650);
+    const t3 = setTimeout(() => setPhase('on'), 3100);
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
+  }, []);
+
   return (
     <group {...props} dispose={null} rotation={[0, -0.2, 0]} position={[0.45, 1.5, 1.2]} scale={0.007}>
       <mesh castShadow receiveShadow geometry={nodes.Box001__0.geometry} material={materials['Scene_-_Root']} position={[5, -55, -100]} rotation={[-Math.PI / 2, 0, 0]} scale={1.65} />
@@ -24,7 +34,10 @@ export default function Model(props) {
         position={[5.5,2,-98]}
         distanceFactor={5.5}
       >
+        <div className="monitor-screen">
           <System/>
+          <div className={`monitor-overlay ${phase}`}/>
+        </div>
       </Html>
     </group>
   )
