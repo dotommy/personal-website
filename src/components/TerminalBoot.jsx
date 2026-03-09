@@ -11,22 +11,26 @@ const TerminalBoot = ({text, delay, endfunction }) => {
     useEffect(() => {
         const bootText = text;
         let index = 0;
+        let timeoutId;
 
-        const number_words = numberWords(bootText)
-        
-        const intervalId = setInterval(() => {
-        if (index <= bootText.length) {
-            setDisplayText(bootText.slice(0, index));
-            index++;
-        } else {
-            clearInterval(intervalId);
-            if (typeof endfunction === 'function'){
-                setInterval(() => {endfunction()},500)
+        const number_words = numberWords(bootText);
+        const intervalMs = delay / number_words;
+
+        function tick() {
+            if (index <= bootText.length) {
+                setDisplayText(bootText.slice(0, index));
+                index++;
+                timeoutId = setTimeout(tick, intervalMs);
+            } else {
+                if (typeof endfunction === 'function') {
+                    timeoutId = setTimeout(endfunction, 500);
+                }
             }
         }
-        }, delay/number_words);
 
-        return () => clearInterval(intervalId);
+        timeoutId = setTimeout(tick, intervalMs);
+
+        return () => clearTimeout(timeoutId);
     }, []);
 
     return (

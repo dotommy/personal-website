@@ -21,7 +21,7 @@ function Welcome({start}) {
     function startScene() {
         ReactGA.initialize("G-WWVWGSW5NR");
         start()
-        setInterval(() => {setHide('hide')},200)
+        setTimeout(() => {setHide('hide')}, 200)
     }
 
     return (

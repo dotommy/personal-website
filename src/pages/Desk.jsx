@@ -14,15 +14,11 @@ export function SetPosition({isMobile}) {
   // set Position and Rotation
   camera.position.set(0.5744641123056496, 1.4582801968300971, 6.986205049458597);
   camera.rotation.set(Math.PI / 80, Math.PI / 6, 0);
-  console.log(camera)
-  useFrame(() => {
-    //console.log(camera)
-  })
+  useFrame(() => {})
+  const boot = useRef(new Audio(Boot))
+
   useEffect(() => {
-    //Animation start
-    console.log("Test AUDIO")
-    const boot = new Audio(Boot)
-    boot.play()
+    boot.current.play()
     gsap.to(camera.rotation, {
       x: -0.09077336600309155,
       y: -0.2042883172204724,
@@ -58,7 +54,6 @@ function Desk() {
   function startScene() {
     setStart(true)
   }
-  console.log(mobile)
   return (
     <>
       <Welcome start={startScene} />

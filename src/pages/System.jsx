@@ -3,8 +3,8 @@ import TerminalBoot from '../components/TerminalBoot';
 import './System.css'
 import Keyboard1 from '../assets/sounds/keyboard.mp3'
 function System() {
-    const keyboard = new Audio(Keyboard1)
-    
+    const keyboard = useRef(new Audio(Keyboard1))
+
     const [input, setInput] = useState('');
     const [output, setOutput] = useState([]);
     const [isSystemStarted, setIsSystemStarted] = useState(false);
@@ -15,7 +15,6 @@ function System() {
     const textEndRef = useRef();
 
     function mainScroll(e) {
-      console.log(e.deltaY)
       const amount = e.deltaY
       terminalref.current.scrollBy(0, amount);
     }
@@ -32,7 +31,8 @@ function System() {
 
     const handleInputChange = (e) => {
       setInput(e.target.value);
-      keyboard.play()
+      keyboard.current.currentTime = 0
+      keyboard.current.play()
     };
   
     const handleInputSubmit = (e) => {
