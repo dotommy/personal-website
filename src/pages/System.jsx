@@ -16,7 +16,6 @@ function System() {
     const [historyIndex, setHistoryIndex] = useState(-1);
 
     const terminalref = useRef()
-    const bottomRef = useRef();
     const textEndRef = useRef();
 
     function mainScroll(e) {
@@ -118,7 +117,9 @@ function System() {
       setHistoryIndex(-1);
 
       setTimeout(() => {
-        bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+        if (terminalref.current) {
+          terminalref.current.scrollTop = terminalref.current.scrollHeight;
+        }
       }, 10);
     };
 
@@ -148,7 +149,6 @@ function System() {
                       ref={textEndRef}
                     />
                   </form>
-                  <div ref={bottomRef} />
                 </>
               ): (null)}
           </main>
