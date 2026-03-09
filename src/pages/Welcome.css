@@ -15,6 +15,13 @@
     font-style: normal;
     font-size: 24pt;
     color: white;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+.welcome.fading {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .container-welcome{
@@ -84,18 +91,14 @@
     color: black;
 }
 
-.hide{
-    display: none;
-}
-
 .welcome-button[disabled] {
     opacity: 0.5;
     cursor: not-allowed;
-  }
+}
 
-  .cookie-button{
+.cookie-button {
     height: 50px;
-    width: 200px;
+    width: 140px;
     border: none;
     background-color: transparent;
     font-family: "VT323", monospace;
@@ -105,13 +108,46 @@
     border-top-style: solid;
     border-right-style: solid;
     border-left-style: solid;
-    font-size: 24pt;
+    border-color: white;
+    border-width: 3pt;
+    font-size: 20pt;
     color: white;
+    cursor: pointer;
 }
 
-.cookie-button:hover{
+.cookie-button:hover {
     background-color: white;
     color: black;
+}
+
+.cookie-button-wrapper {
+    display: flex;
+    gap: 12px;
+}
+
+.progress-bar-wrapper {
+    width: 200px;
+    border: 3pt solid white;
+    height: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: white;
+    transition: width 0.2s ease;
+}
+
+.progress-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14pt;
+    color: black;
+    mix-blend-mode: difference;
+    pointer-events: none;
 }
 
 @media only screen and (max-width: 600px) {
